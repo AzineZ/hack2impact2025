@@ -16,7 +16,7 @@ export default function AuthForm({ onAuthSuccess }) {
         try {
             if (showForgotPassword) {
                 await resetPassword(email);
-                setMessage("Password reset email sent");
+                setMessage("Password reset email sent if account exists");
                 setShowForgotPassword(false);
             } else if (isLogin) {
                 await logIn(email, password);
@@ -38,7 +38,7 @@ export default function AuthForm({ onAuthSuccess }) {
         }
         try {
             await resetPassword(email);
-            setMessage("Password reset email sent");
+            setMessage("Password reset email sent if account exists");
             setShowForgotPassword(false);
         } catch (err) {
             setError(err.message);
