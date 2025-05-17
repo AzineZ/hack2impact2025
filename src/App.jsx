@@ -9,6 +9,8 @@ import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import Profile from './pages/Profile'
 import Results from './pages/Result';
+import WhatIsAutism from './pages/WhatIsAutism';
+import Footer from './components/Footer';
 
 import './App.css'
 
@@ -69,8 +71,19 @@ function App() {
           </ProtectedRoute>
         }
       />
+      <Route
+        path="/WhatIsAutism"
+        element={
+          <ProtectedRoute>
+            <WhatIsAutism />
+          </ProtectedRoute>
+        }
+      />
+
       <Route path="/results/:profileId" element={<Results />} />
-    </Routes>
+      </Routes>
+
+      <Footer />
     </BrowserRouter>
   );
 }
