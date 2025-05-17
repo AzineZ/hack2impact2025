@@ -9,31 +9,12 @@ import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import Profile from './pages/Profile'
 import Results from './pages/Result';
+import AdminDashboard from './pages/AdminDashboard';
+import AdminRoute from './components/AdminRoute';
 
 import './App.css'
 
 function App() {
-  useEffect(() => {
-    const testFirebase = async () => {
-      // Write test
-      await setDoc(doc(db, "testCollection", "testDoc"), {
-        hello: "world"
-      });
-
-      // Read test
-      const docRef = doc(db, "testCollection", "testDoc");
-      const docSnap = await getDoc(docRef);
-
-      if (docSnap.exists()) {
-        console.log("Document data:", docSnap.data());
-      } else {
-        console.log("No such document!");
-      }
-    };
-
-    testFirebase();
-  }, []);
-
   function ProtectedRoute({ children }) {
     const { user, isVerified, loading } = useAuth();
     const navigate = useNavigate();
@@ -70,6 +51,14 @@ function App() {
         }
       />
       <Route path="/results/:profileId" element={<Results />} />
+      <Route
+        path="/admin"
+        element={
+          <AdminRoute>
+            <AdminDashboard />
+          </AdminRoute>
+        }
+      />
     </Routes>
     </BrowserRouter>
   );
