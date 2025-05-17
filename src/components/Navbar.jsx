@@ -7,8 +7,10 @@ export default function Navbar() {
     <nav>
       <Link to="/">Login</Link> | 
       <Link to="/profile">Profile</Link> | 
+      <Link to ="/WhatIsAutism">What Is Autism</Link> | 
       <Link to="/dashboard">Dashboard</Link> | 
       {!loading && isAdmin && <Link to="/admin">Admin</Link>}
     </nav>
+    
   );
 }

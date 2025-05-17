@@ -11,6 +11,9 @@ import Profile from './pages/Profile'
 import Results from './pages/Result';
 import AdminDashboard from './pages/AdminDashboard';
 import AdminRoute from './components/AdminRoute';
+import WhatIsAutism from './pages/WhatIsAutism';
+import Footer from './components/Footer';
+import Resources from './pages/Resources'
 
 import './App.css'
 
@@ -50,6 +53,23 @@ function App() {
           </ProtectedRoute>
         }
       />
+      <Route
+        path="/WhatIsAutism"
+        element={
+          <ProtectedRoute>
+            <WhatIsAutism />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/resources"
+        element={
+          <ProtectedRoute>
+            <Resources />
+          </ProtectedRoute>
+        }
+      />
       <Route path="/results/:profileId" element={<Results />} />
       <Route
         path="/admin"
@@ -60,8 +80,10 @@ function App() {
         }
       />
     </Routes>
+    <Footer />
     </BrowserRouter>
   );
 }
+
 
 export default App
