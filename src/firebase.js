@@ -6,12 +6,12 @@ import { getFirestore } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyB_qwC6mA-RK-1hZ9C2uWu0ks_cc4HwkU4",
-  authDomain: "smiles-for-speech-2025.firebaseapp.com",
-  projectId: "smiles-for-speech-2025",
-  storageBucket: "smiles-for-speech-2025.firebasestorage.app",
-  messagingSenderId: "998951737438",
-  appId: "1:998951737438:web:d701da151995fcd8fa7ccf"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_APP_ID
 };
 
 // Initialize Firebase
