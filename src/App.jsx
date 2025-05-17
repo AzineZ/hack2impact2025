@@ -9,6 +9,7 @@ import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import Profile from './pages/Profile'
 import Results from './pages/Result';
+import Resources from './pages/Resources'
 
 import './App.css'
 
@@ -66,6 +67,14 @@ function App() {
         element={
           <ProtectedRoute>
             <Profile />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/resources"
+        element={
+          <ProtectedRoute>
+            <Resources />
           </ProtectedRoute>
         }
       />
