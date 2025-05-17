@@ -9,9 +9,8 @@ export default function Login() {
 
     useEffect(() => {
         if (user && isVerified) {
-            navigate('/profile');
+            navigate('/dashboard');
         }
     }, [user, isVerified, navigate]);
-    
-    return <AuthForm onAuthSuccess={() => navigate('/profile')} />;
+    return <AuthForm onAuthSuccess={() => navigate('/dashboard')} />;
 }

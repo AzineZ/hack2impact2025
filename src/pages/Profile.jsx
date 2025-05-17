@@ -10,6 +10,7 @@ import {
 import ProfileForm from '../components/ProfileForm';
 import ProfileList from '../components/ProfileList';
 import AutismForm from '../components/AutismForm';
+import { useNavigate } from 'react-router-dom';
 
 export default function Profile() {
   const auth = getAuth();
@@ -19,6 +20,11 @@ export default function Profile() {
   const [editingProfile, setEditingProfile] = useState(null);
   const [formVisible, setFormVisible] = useState(false);
   const [screeningProfile, setScreeningProfile] = useState(null);
+  const navigate = useNavigate();
+
+  const handleBackToDashboard = () => {
+    navigate('/dashboard');
+  };
 
   useEffect(() => {
     if (!user) return;
@@ -49,6 +55,10 @@ export default function Profile() {
         setFormVisible(true);
       }}>
         + Add New Child
+      </button>
+
+      <button onClick={handleBackToDashboard}>
+        ← Back to Dashboard
       </button>
 
       {formVisible && (
