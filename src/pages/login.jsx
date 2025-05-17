@@ -1,7 +1,17 @@
-import AuthForm from "../AuthForm";
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import AuthForm from '../AuthForm';
+import useAuth from '../hooks/useAuth';
 
 export default function Login() {
-    return (
-        < AuthForm />
-    );
+    const navigate = useNavigate();
+    const { user, isVerified } = useAuth();
+
+    useEffect(() => {
+        if (user && isVerified) {
+            navigate('/profile');
+        }
+    }, [user, isVerified, navigate]);
+    
+    return <AuthForm onAuthSuccess={() => navigate('/profile')} />;
 }
