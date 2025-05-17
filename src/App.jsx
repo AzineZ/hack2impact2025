@@ -8,6 +8,7 @@ import Navbar from './components/Navbar';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import Profile from './pages/Profile'
+import Results from './pages/Result';
 
 import './App.css'
 
@@ -39,6 +40,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/results/:profileId" element={<Results />} />
       </Routes>
     </BrowserRouter>
   );
