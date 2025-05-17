@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 const resources = [
   {
@@ -52,30 +53,44 @@ const resources = [
 ];
 
 export default function Resources() {
-    return (
-        <div style={styles.container}>
-            <h1 style={styles.heading}>Autism Resources in Ghana</h1>
-            <Link to="/dashboard" style={styles.backLink}>← Back to Dashboard</Link>
+    const [hoveredCard, setHoveredCard] = useState(null);
 
-            <div style={styles.resourcesContainer}>
-                {resources.map((resource, index) => (
-                    <div key={index} style={styles.card}>
-                        <h3 style={styles.orgName}>{resource.name}</h3>
-                        <p style={styles.description}>{resource.description}</p>
+    const cardStyle = (index) => ({
+        ...styles.card,
+        transform: hoveredCard === index ? 'translateY(-5px)' : 'none',
+        boxShadow: hoveredCard === index ? '0 5px 15px rgba(0,0,0.2)'  : styles.card.boxShadow,
+        // backgroundColor: hoveredCard === index ? '#f0f0f0' : styles.card.backgroundColor,
+        transition: 'all 0.3 ease'
+    });
+ return (
+    <div style={styles.container}>
+      <h1 style={styles.heading}>Autism Resources in Ghana</h1>
+      <Link to="/dashboard" style={styles.backLink}>← Back to Dashboard</Link>
 
-                        <div style={styles.details}>
-                            <p style={styles.detailText}>📍 {resource.location}</p>
-                            <p style={styles.detailText}>📞 {resource.contact}</p>
-                            <p style={styles.detailText}>📧 <a href={`mailto:${resource.email}`} style={styles.link}>{resource.email}</a></p>
-                            <p style={styles.detailText}>🌐 <a href={resource.website} target="_blank" rel="noopener noreferrer" style={styles.link}>
-                                {resource.website}    
-                            </a></p>
-                        </div>
-                    </div>
-                ))}
+      <div style={styles.resourcesContainer}>
+        {resources.map((resource, index) => (
+          <div
+            key={index}
+            style={cardStyle(index)}
+            onMouseEnter={() => setHoveredCard(index)}
+            onMouseLeave={() => setHoveredCard(null)}
+          >
+            <h3 style={styles.orgName}>{resource.name}</h3>
+            <p style={styles.description}>{resource.description}</p>
+
+            <div style={styles.details}>
+              <p style={styles.detailText}>📍 {resource.location}</p>
+              <p style={styles.detailText}>📞 {resource.contact}</p>
+              <p style={styles.detailText}>📧 <a href={`mailto:${resource.email}`} style={styles.link}>{resource.email}</a></p>
+              <p style={styles.detailText}>🌐 <a href={resource.website} target="_blank" rel="noopener noreferrer" style={styles.link}>
+                {resource.website}    
+              </a></p>
             </div>
-        </div>
-    )
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 }
 
 const styles = {
@@ -87,7 +102,8 @@ const styles = {
     heading: {
         fontSize: '2rem',
         marginBottom: '1rem',
-        color: '#2c3e50'
+        color: '#e67e22',
+        textShadow: '1px 1px 2px rgba(0,0,0,0.3)'
     },
     backLink: {
         display: 'inline-block',
@@ -97,37 +113,56 @@ const styles = {
     },
     resourcesContainer: {
         display: 'grid',
-        gap: '2rem',
+        gap: '2.5rem',
         gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))'
     },
     card: {
-        backgroundColor: '#f9f9f9',
+        backgroundColor: 'rgb(231, 197, 197)',
         borderRadius: '10px',
         padding: '1.5rem',
-        boxShadow: '0 2px 5px rgba(0,0,0,0.1)'
+        boxShadow: '0 2px 5px rgba(0,0,0,0.1)',
+        display: 'flex',
+        flexDirection: 'column',
+        transition: 'trasnform 0.2 ease, box-shadow 0.2 ease',
+        ':hover': {
+            transform: 'translateY(-5px)',
+            boxShadow: '0 5px 15px rgba(0,0,0,0.1)'
+        }
+    },
+    cardContent: {
+        flex: 1,
+        marginBottom: '1.5rem'
     },
     orgName: {
         color: '#e67e22',
-        marginBottom: '1rem'
+        marginBottom: '1.2rem',
+        fontSize: '1.4rem'
     },
     description: {
         color: '#666',
         marginBottom: '1rem',
-        lineHeight: '1.5'
+        lineHeight: '1.6',
+        fontSize: '1rem',
+        fontWeight: '500'
     },
     details: {
         backgroundColor: '#fff',
-        padding: '1rem',
+        padding: '1.2rem',
         borderRadius: '8px',
-        marginTop: '1rem'
+        marginTop: 'auto',
+        border: '1px solid #eee'
     },
     detailText: {
         color: '#333',
-        margin: '0.5rem 0'
+        margin: '0.6rem 0',
+        fontSize: '0.95rem'
     },
     link: {
         color: '#3498db',
         textDecoration: 'none',
-        wordBreak: 'break-all'
+        wordBreak: 'break-all',
+        ':hover': {
+            textDecoration: 'underline'
+        }
     }
 };
