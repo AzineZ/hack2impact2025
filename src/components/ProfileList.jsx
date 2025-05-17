@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 export default function ProfileList({ profiles, onEdit, onDelete, onScreen }) {
   return (
     <div>
@@ -16,8 +18,9 @@ export default function ProfileList({ profiles, onEdit, onDelete, onScreen }) {
                 Delete
               </button>
               <button onClick={() => onScreen(profile)} style={{ marginLeft: '0.5em' }}>
-                Screen
+                New Screening
               </button>
+              <Link to={`/results/${profile.id}`}>View Results</Link>
               <hr />
             </li>
           ))}
