@@ -51,7 +51,18 @@ export default function useAuth() {
             }
             return userCredential;
         } catch (error) {
-            throw error;
+            let errorMessage;
+            switch (error.code) {
+                case 'auth/invalid-credential':
+                    errorMessage = 'Invalid email or password';
+                    break;
+                case 'auth/user-not-found':
+                    errorMessage = 'No account found with this email';
+                    break;
+                default:
+                    errorMessage = error.message.replace('Firebase: ', '');
+            }
+            throw new Error(errorMessage)
         }
     };
 

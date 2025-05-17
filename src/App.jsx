@@ -3,7 +3,7 @@ import { setDoc, getDoc, doc } from 'firebase/firestore';
 import AuthForm from './AuthForm';
 import useAuth from './hooks/useAuth'
 import { db } from './firebase';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Link, useNavigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
@@ -34,14 +34,35 @@ function App() {
     testFirebase();
   }, []);
 
+  function ProtectedRoute({ children }) {
+    const { user, isVerified, loading } = useAuth();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+      if (!loading && (!user || !isVerified)) {
+        navigate('/');
+      }
+    }, [user, isVerified, loading, navigate]);
+
+    if (loading) return <div>Loading...</div>
+    return user && isVerified ? children : null;
+  }
+
   return (
     <BrowserRouter>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/results/:profileId" element={<Results />} />
-      </Routes>
+      <Route path="/" element={<Login />} />
+      <Route
+        path="/profile"
+        element={
+          <ProtectedRoute>
+            <Profile />
+          </ProtectedRoute>
+        }
+      />
+      <Route path="/results/:profileId" element={<Results />} />
+    </Routes>
     </BrowserRouter>
   );
 }
