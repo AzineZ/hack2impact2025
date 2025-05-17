@@ -11,6 +11,7 @@ import Profile from './pages/Profile'
 import Results from './pages/Result';
 import WhatIsAutism from './pages/WhatIsAutism';
 import Footer from './components/Footer';
+import Resources from './pages/Resources'
 
 import './App.css'
 
@@ -71,15 +72,6 @@ function App() {
           </ProtectedRoute>
         }
       />
-      <Route
-        path="/WhatIsAutism"
-        element={
-          <ProtectedRoute>
-            <WhatIsAutism />
-          </ProtectedRoute>
-        }
-      />
-
       <Route path="/results/:profileId" element={<Results />} />
       </Routes>
 
