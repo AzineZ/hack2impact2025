@@ -79,7 +79,7 @@ export default function Results() {
         <p>No screenings found for this child.</p>
       ) : (
         <ul>
-          <h3>Score Over Time</h3>
+          <h3>Severity Score Over Time (Lower is better)</h3>
             <div style={{ width: '100%', height: 300 }}>
             <ResponsiveContainer>
                 <LineChart data={chartData}>
