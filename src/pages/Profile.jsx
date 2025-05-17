@@ -9,6 +9,7 @@ import {
 } from 'firebase/firestore';
 import ProfileForm from '../components/ProfileForm';
 import ProfileList from '../components/ProfileList';
+import AutismForm from '../components/AutismForm';
 
 export default function Profile() {
   const auth = getAuth();
@@ -17,6 +18,7 @@ export default function Profile() {
   const [profiles, setProfiles] = useState([]);
   const [editingProfile, setEditingProfile] = useState(null);
   const [formVisible, setFormVisible] = useState(false);
+  const [screeningProfile, setScreeningProfile] = useState(null);
 
   useEffect(() => {
     if (!user) return;
@@ -64,7 +66,18 @@ export default function Profile() {
           setFormVisible(true);
         }}
         onDelete={handleDelete}
+        onScreen={(profile) => {
+          setScreeningProfile(profile);
+          setFormVisible(false);
+        }}
       />
+
+      {screeningProfile && (
+        <AutismForm
+          profile={screeningProfile}
+          user={user}
+          onClose={() => setScreeningProfile(null)}
+        />)}
     </div>
   );
 }
