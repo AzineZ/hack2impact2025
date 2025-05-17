@@ -13,6 +13,7 @@ import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../firebase';
 import { getAuth } from 'firebase/auth';
 import { getRecommendations } from '../utilityFunctions/recRules';
+import ScreeningResultActions from '../components/ScreeningResultActions';
 
 function interpretScore(score) {
   if (score <= 30) return 'Low concern';
@@ -120,6 +121,10 @@ export default function Results() {
                   <li key={i}>{rec}</li>
                 ))}
               </ul>
+              <ScreeningResultActions
+                screening={screening}
+                recommendations={getRecommendations(screening)}
+              />
             </li>
           ))}
         </ul>
