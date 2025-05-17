@@ -4,8 +4,10 @@ import AuthForm from './AuthForm';
 import useAuth from './hooks/useAuth'
 import { db } from './firebase';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import Login from './pages/login';
-import Dashboard from './pages/dashboard';
+import Navbar from './components/Navbar';
+import Login from './pages/Login';
+import Dashboard from './pages/Dashboard';
+import Profile from './pages/Profile'
 
 import './App.css'
 
@@ -33,14 +35,10 @@ function App() {
 
   return (
     <BrowserRouter>
-      <nav>
-        <Link to="/">Login</Link> |{" "}
-        <Link to="/about">Dashboard</Link>
-      </nav>
-      
+      <Navbar />
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/about" element={<Dashboard />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     </BrowserRouter>
   );
