@@ -33,7 +33,7 @@ export default function Navbar() {
         {/* Auth Buttons */}
         <div style={{ flex: 1, textAlign: 'right' }}>
           <Link to="/signup" style={signUpStyle}>Sign up</Link>
-          <Link to="/profile" style={logInStyle}>Profile</Link>
+          <Link to="/dashboard" style={logInStyle}>Dashboard</Link>
         </div>
       </div>
 
@@ -51,7 +51,7 @@ export default function Navbar() {
         <Link to="/information" style={navLinkStyle}>Information</Link>
         <Link to="/assessment" style={navLinkStyle}>Assessment</Link>
         <Link to="/resources" style={navLinkStyle}>Resources & Support</Link>
-        <Link to="/faq" style={navLinkStyle}>FAQ</Link>
+        <Link to="https://www.smilesforspeech.org/" style={navLinkStyle}>Official Website</Link>
       </nav>
     </header>
   );
