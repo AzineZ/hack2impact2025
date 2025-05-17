@@ -72,6 +72,23 @@ function App() {
           </ProtectedRoute>
         }
       />
+      <Route
+        path="/WhatIsAutism"
+        element={
+          <ProtectedRoute>
+            <WhatIsAutism />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/resources"
+        element={
+          <ProtectedRoute>
+            <Resources />
+          </ProtectedRoute>
+        }
+      />
       <Route path="/results/:profileId" element={<Results />} />
       </Routes>
 
