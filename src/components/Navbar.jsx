@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
+import useAdminStatus from '../hooks/useAdminStatus';
 
 export default function Navbar() {
+  const { isAdmin, loading } = useAdminStatus();
   return (
     <header style={{ borderBottom: '1px solid #ddd' }}>
       

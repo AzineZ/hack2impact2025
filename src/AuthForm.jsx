@@ -24,7 +24,7 @@ export default function AuthForm({ onAuthSuccess }) {
                 onAuthSuccess();
             } else {
                 await signUp(email, password);
-                setMessage("Account created! Check your email for verification");
+                setMessage("Account created! Check your email for verification, then Log In");
             }
         } catch (err) {
             setError(err.message.replace("Firebase: ", ""));
