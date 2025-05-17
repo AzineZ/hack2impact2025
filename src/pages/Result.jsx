@@ -12,12 +12,14 @@ import { useParams, Link } from 'react-router-dom';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../firebase';
 import { getAuth } from 'firebase/auth';
+import { getRecommendations } from '../utilityFunctions/recRules';
 
 function interpretScore(score) {
   if (score <= 30) return 'Low concern';
   if (score <= 55) return 'Moderate concern';
   return 'High concern';
 }
+
 
 export default function Results() {
   const { profileId } = useParams();
@@ -95,7 +97,7 @@ export default function Results() {
               <p><strong>Assessment:</strong> {interpretScore(screening.totalScore)}</p>
               
               <button onClick={() => toggleExpanded(screening.id)}>
-                {expandedId === screening.id ? 'Hide Details' : 'Show Details'}
+                {expandedId === screening.id ? 'Hide Screening Details' : 'Show Screening Details'}
               </button>
 
               {expandedId === screening.id && (
@@ -110,6 +112,14 @@ export default function Results() {
                   </ul>
                 </div>
               )}
+
+              {/* Always visible recommendations */}
+              <h4>Personalized Recommendations</h4>
+              <ul>
+                {getRecommendations(screening).map((rec, i) => (
+                  <li key={i}>{rec}</li>
+                ))}
+              </ul>
             </li>
           ))}
         </ul>
