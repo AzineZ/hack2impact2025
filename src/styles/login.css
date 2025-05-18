@@ -96,6 +96,22 @@
     color: #34495e;
     margin-bottom: 1.5rem;
   }
+
+  .login-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .login-content {
+    position: relative;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
   
   /* Inputs inside the form */
   .login-card input[type="email"],
@@ -157,7 +173,7 @@
     background-color: #F9BF18;
   }
   
-  .login-container ~ footer {
+  .login-page + footer {
     position: fixed;
     bottom: 0;
     left: 0;
