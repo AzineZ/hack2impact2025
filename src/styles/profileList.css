@@ -1,0 +1,71 @@
+/* Profile card container */
+.profile-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding-left: 0;
+    list-style: none;
+    justify-content: center;
+  }
+  
+  /* Card style */
+  .profile-card {
+    flex: 1 1 280px;
+    max-width: 320px;
+    border: 2px solid #f1c40f;
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease;
+  }
+  
+  .profile-card:hover {
+    transform: scale(1.02);
+  }
+  
+  /* Text styling inside each card */
+  .profile-card strong {
+    font-size: 1.2rem;
+    color: #2c3e50;
+  }
+  
+  .profile-card p {
+    font-size: 1rem;
+    margin: 0.3rem 0;
+    color: #444;
+  }
+  
+  .profile-card em {
+    font-style: italic;
+    color: #666;
+  }
+  
+  /* Buttons and links inside each profile */
+  .profile-actions {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .profile-actions button,
+  .profile-actions a {
+    padding: 0.6rem;
+    border-radius: 6px;
+    border: none;
+    background-color: #f1c40f; /* match the border */
+    color: #000;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: background-color 0.2s ease;
+  }
+  
+  .profile-actions button:hover,
+  .profile-actions a:hover {
+    background-color: #e1b700;
+  }
+  

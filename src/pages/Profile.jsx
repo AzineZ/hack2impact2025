@@ -11,6 +11,7 @@ import ProfileForm from '../components/ProfileForm';
 import ProfileList from '../components/ProfileList';
 import AutismForm from '../components/AutismForm';
 import { useNavigate } from 'react-router-dom';
+import '../styles/profile.css';
 
 export default function Profile() {
   const auth = getAuth();
@@ -48,19 +49,22 @@ export default function Profile() {
   };
 
   return (
-    <div>
-      <h2>Manage Child Profiles</h2>
-      <button onClick={() => {
-        setEditingProfile(null);
-        setFormVisible(true);
-      }}>
-        + Add New Child
-      </button>
-
-      <button onClick={handleBackToDashboard}>
-        ← Back to Dashboard
-      </button>
-
+    <div className="profile-page">
+      <h2 className="profile-title">Manage Child Profiles</h2>
+  
+      <div className="profile-buttons">
+        <button onClick={() => {
+          setEditingProfile(null);
+          setFormVisible(true);
+        }}>
+          + Add New Child
+        </button>
+  
+        <button onClick={handleBackToDashboard}>
+          ← Back to Dashboard
+        </button>
+      </div>
+  
       {formVisible && (
         <ProfileForm
           user={user}
@@ -68,7 +72,7 @@ export default function Profile() {
           editingProfile={editingProfile}
         />
       )}
-
+  
       <ProfileList
         profiles={profiles}
         onEdit={(profile) => {
@@ -81,13 +85,14 @@ export default function Profile() {
           setFormVisible(false);
         }}
       />
-
+  
       {screeningProfile && (
         <AutismForm
           profile={screeningProfile}
           user={user}
           onClose={() => setScreeningProfile(null)}
-        />)}
+        />
+      )}
     </div>
   );
 }

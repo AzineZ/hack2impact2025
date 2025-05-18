@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import '../styles/ProfileList.css';
 
 export default function ProfileList({ profiles, onEdit, onDelete, onScreen }) {
   return (
@@ -7,21 +8,19 @@ export default function ProfileList({ profiles, onEdit, onDelete, onScreen }) {
       {profiles.length === 0 ? (
         <p>No profiles yet.</p>
       ) : (
-        <ul>
+        <ul className="profile-grid">
           {profiles.map((profile) => (
-            <li key={profile.id}>
-              <strong>{profile.name}</strong> (age {profile.age})<br />
-              <em>{profile.notes}</em>
-              <br />
-              <button onClick={() => onEdit(profile)}>Edit</button>
-              <button onClick={() => onDelete(profile.id)} style={{ marginLeft: '0.5em' }}>
-                Delete
-              </button>
-              <button onClick={() => onScreen(profile)} style={{ marginLeft: '0.5em' }}>
-                New Screening
-              </button>
-              <Link to={`/results/${profile.id}`}>View Results</Link>
-              <hr />
+            <li key={profile.id} className="profile-card">
+              <strong>{profile.name}</strong>
+              <p>Age: {profile.age}</p>
+              {profile.notes && <p><em>{profile.notes}</em></p>}
+
+              <div className="profile-actions">
+                <button onClick={() => onEdit(profile)}>Edit</button>
+                <button onClick={() => onDelete(profile.id)}>Delete</button>
+                <button onClick={() => onScreen(profile)}>New Screening</button>
+                <Link to={`/results/${profile.id}`}>View Results</Link>
+              </div>
             </li>
           ))}
         </ul>
