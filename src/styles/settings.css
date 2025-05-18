@@ -1,0 +1,120 @@
+.settings-container {
+    max-width: 600px;
+    margin: 3rem auto;
+    padding: 2.5rem;
+    background: white;
+    border: 2px solid #f1c40f;
+    border-radius: 12px;
+    font-family: 'Segoe UI', sans-serif;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+  }
+  
+  .settings-container h2 {
+    text-align: center;
+    color: #2c3e50;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .settings-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+  }
+  
+  .settings-form label {
+    font-weight: 600;
+    color: #2c3e50;
+    display: flex;
+    flex-direction: column;
+    font-size: 0.95rem;
+  }
+  
+  .settings-form input {
+    margin-top: 0.4rem;
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+  
+  .settings-form button {
+    background-color: #f1c40f;
+    color: black;
+    border: none;
+    padding: 0.75rem;
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .settings-form button:hover {
+    background-color: #e1b700;
+  }
+  
+  .danger-zone {
+    border-top: 1px solid #ddd;
+    padding-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  
+  .checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    color: #2c3e50;
+  }
+  
+  .checkbox-label input[type="checkbox"] {
+    transform: scale(1.2);
+  }
+  
+  .delete-btn {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 0.75rem;
+    font-weight: bold;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .delete-btn:hover {
+    background-color: #c0392b;
+  }
+  
+  .status-msg {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-weight: 500;
+    color: #2ecc71;
+  }
+
+  .back-button-container {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .back-button-container button {
+    background-color: #f1c40f;
+    color: black;
+    font-weight: bold;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .back-button-container button:hover {
+    background-color: #e1b700;
+  }
+  

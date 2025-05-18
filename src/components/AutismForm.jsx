@@ -107,30 +107,28 @@ export default function AutismForm({ user, profile, onClose }) {
       </label>
 
       {Object.entries(questionGroups).map(([section, questions]) => (
-        <fieldset key={section}>
-          <legend>{section}</legend>
-          {questions.map((q) => (
-            <div key={q} className="question-block">
-              <label>{q}</label>
-              <div className="likert-options">
-                {likertOptions.map((opt) => (
-                  <label key={opt}>
-                    <input
-                      type="radio"
-                      name={q}
-                      value={opt}
-                      checked={answers[q] === opt}
-                      onChange={() => handleAnswer(q, opt)}
-                      required
-                    />
-                    {opt}
-                  </label>
-                ))}
-              </div>
+      <fieldset key={section} className="question-section">
+        <legend>{section}</legend>
+        {questions.map((q, idx) => (
+          <div key={q} className="question-box">
+            <p className="question-label">Question {idx + 1}</p>
+            <p>{q}</p>
+            <div className="likert-buttons">
+              {likertOptions.map((opt) => (
+                <button
+                  type="button"
+                  key={opt}
+                  className={`likert-button ${answers[q] === opt ? 'selected' : ''}`}
+                  onClick={() => handleAnswer(q, opt)}
+                >
+                  {opt}
+                </button>
+              ))}
             </div>
-          ))}
-        </fieldset>
-      ))}
+          </div>
+        ))}
+      </fieldset>
+    ))}
 
       <div className="form-buttons">
         <button type="submit" disabled={submitting}>
