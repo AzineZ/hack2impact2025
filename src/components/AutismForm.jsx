@@ -70,10 +70,15 @@ export default function AutismForm({ user, profile, onClose }) {
         'screenings'
       );
 
+      const score = Object.values(answers).reduce((sum, val) => {
+        return sum + likertMap[val];
+      }, 0);
+
       await addDoc(screeningsRef, {
         profileId: profile.id,
         profileName: profile.name,
         contact: contactInfo,
+        totalScore: score,
         answers: Object.fromEntries(
           Object.entries(answers).map(([q, a]) => [q, likertMap[a]])
         ),
