@@ -79,7 +79,6 @@ export default function Resources() {
     return (
         <div style={styles.container}>
             <h1 style={styles.heading}>Resources and Support in Ghana</h1>
-            <Link to="/dashboard" style={styles.backLink}>← Back to Dashboard</Link>
 
             <div style={styles.resourcesContainer}>
                 {resources.map((resource, index) => (
