@@ -36,72 +36,86 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Navbar /> 
-      <Routes>
-      <Route path="/" element={<Login />} />
-      <Route
-        path="/dashboard"
-        element={
-          <ProtectedRoute>
-            <Dashboard />
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/profile"
-        element={
-          <ProtectedRoute>
-            <Profile />
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/WhatIsAutism"
-        element={
-          <ProtectedRoute>
-            <WhatIsAutism />
-          </ProtectedRoute>
-        }
-      />
+      <div style={{
+        display: 'flex',
+        flexDirection: 'column',
+        minHeight: '100vh'
+      }}>
+        <Navbar />
 
-      <Route
-        path="/Information"
-        element={
-          <ProtectedRoute>
-            <Information />
-          </ProtectedRoute>
-        }
-      />
+        <div style={{
+          flex: 1,
+          padding: '20px 0'
+        }}>
+          <Routes>
+            <Route path="/" element={<Login />} />
+            <Route
+              path="/dashboard"
+              element={
+                <ProtectedRoute>
+                  <Dashboard />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/profile"
+              element={
+                <ProtectedRoute>
+                  <Profile />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/WhatIsAutism"
+              element={
+                <ProtectedRoute>
+                  <WhatIsAutism />
+                </ProtectedRoute>
+              }
+            />
 
-      <Route
-        path="/resources"
-        element={
-          <ProtectedRoute>
-            <Resources />
-          </ProtectedRoute>
-        }
-      />
+            <Route
+              path="/Information"
+              element={
+                <ProtectedRoute>
+                  <Information />
+                </ProtectedRoute>
+              }
+            />
 
-      <Route
-        path="/settings"
-        element={
-          <ProtectedRoute>
-            <Settings />
-          </ProtectedRoute>
-        }
-      />
+            <Route
+              path="/resources"
+              element={
+                <ProtectedRoute>
+                  <Resources />
+                </ProtectedRoute>
+              }
+            />
+
+            <Route
+              path="/settings"
+              element={
+                <ProtectedRoute>
+                  <Settings />
+                </ProtectedRoute>
+              }
+            />
 
 
-      <Route path="/results/:profileId" element={<Results />} />
-      <Route
-        path="/admin"
-        element={
-          <AdminRoute>
-            <AdminDashboard />
-          </AdminRoute>
-        }
-      />
-    </Routes>
+            <Route path="/results/:profileId" element={<Results />} />
+            <Route
+              path="/admin"
+              element={
+                <AdminRoute>
+                  <AdminDashboard />
+                </AdminRoute>
+              }
+            />
+          </Routes>
+        </div>
+
+      </div>
+      
     <Footer />
     </BrowserRouter>
   );
