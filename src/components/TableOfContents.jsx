@@ -13,7 +13,9 @@ export default function TableOfContents() {
         boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
         padding: '1.25rem',
         fontSize: '0.875rem',
-        color: '#1d4ed8'
+        color: '#1d4ed8',
+        marginTop: '10%',
+        marginLeft: '1.5%',
       }}>
         <h2 style={{
           fontSize: '1.125rem',

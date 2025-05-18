@@ -3,24 +3,49 @@ import React from 'react';
 export default function WhatIsAutism() {
   return (
     <>
-      <main className="max-w-3xl mx-auto px-6 py-10 text-gray-800 leading-relaxed">
-        <h1 className="text-3xl font-semibold text-blue-700 mb-6">What is Autism?</h1>
+      <main>
+        <h1>What is Autism?</h1>
+
+        <div 
+        style={{
+          width: '1200px',
+          height: 'auto',
+          display: 'block',
+          marginLeft: 'auto',
+          marginRight: 'auto'
+        }}>
+
+          <p className="mb-2">
+          Autism is a condition that affects how the brain develops, typically showing signs 
+          within the first few years of life. Because it exists on a spectrum, individuals may 
+          experience a wide variety of behaviors, challenges, and strengths. Outcomes can vary, 
+          and early support often plays a key role in shaping a child's development.
+          </p>
+
+          <p >
+          Although autism was once believed to be untreatable, current research has led to therapies 
+          that can make a meaningful difference. While it remains a lifelong condition, many 
+          individuals benefit from tailored strategies. Families often work closely with healthcare 
+          professionals to determine the most effective ways to address each person's unique needs.
+          </p>
+
+
+        </div>
         
-        <p className="mb-3">
-          Autism Spectrum Disorder (ASD) is a developmental condition that affects how a person communicates, interacts with others, and experiences the world around them. It is called a "spectrum" because individuals with autism can have a wide range of symptoms and skills.
-        </p>
+        <img 
+          src="src/assets/What is autism infographic.jpg" 
+          alt="Autism awareness illustration" 
+          className="mx-auto rounded-lg shadow-md mb-6"
+          style={{
+            width: '500px',
+            height: 'auto',
+            display: 'block',
+            marginLeft: 'auto',
+            marginRight: 'auto'
+          }}
+        />
 
-        <p className="mb-3">
-          Children with autism may show differences in how they play, learn, speak, and behave. Some may require significant support in their daily lives, while others may need less support and live independently.
-        </p>
 
-        <p className="mb-3">
-          Early identification and intervention are crucial in supporting children with autism. With the right resources and understanding, children with autism can thrive and reach their full potential.
-        </p>
-
-        <p>
-          Our platform is designed to support families by offering information, assessments, and resources tailored to the needs of children on the autism spectrum.
-        </p>
       </main>
     </>
   );
