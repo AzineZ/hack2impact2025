@@ -94,7 +94,7 @@ export default function Results() {
           {screenings.map((screening) => (
             <li key={screening.id} style={{ marginBottom: '1em', borderBottom: '1px solid #ccc', paddingBottom: '1em' }}>
               <p><strong>Date:</strong> {screening.submittedAt?.toDate().toLocaleDateString()}</p>
-              <p><strong>Score:</strong> {screening.totalScore}/80</p>
+              <p><strong>Severity Score:</strong> {screening.totalScore}/80</p>
               <p><strong>Assessment:</strong> {interpretScore(screening.totalScore)}</p>
               
               <button onClick={() => toggleExpanded(screening.id)}>

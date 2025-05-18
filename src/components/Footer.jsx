@@ -8,19 +8,8 @@ export default function Footer() {
       padding: '2rem 1rem',
       backgroundColor: '#fff',
     }}>
-      <div style={{
-        textAlign: 'center',
-        fontSize: '1rem',
-        fontWeight: '500',
-        marginBottom: '0.75rem'
-      }}>
-        <Link to="/about" style={linkStyle}>About Us</Link>
-        <span style={separator}>|</span>
-        <Link to="/contact" style={linkStyle}>Contact</Link>
-        <span style={separator}>|</span>
-        <Link to="/donate" style={linkStyle}>Donate</Link>
-        <span style={separator}>|</span>
-        <Link to="/get-involved" style={linkStyle}>Get Involved</Link>
+      <div>
+      <a className='website-link' href="https://www.smilesforspeech.org/">Official Website</a>
       </div>
 
       <div style={{ textAlign: 'center', fontSize: '0.9rem', color: '#666' }}>

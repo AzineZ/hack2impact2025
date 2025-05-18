@@ -29,12 +29,6 @@ export default function Navbar() {
         }}>
           Smiles for Speech
         </div>
-
-        {/* Auth Buttons */}
-        <div style={{ flex: 1, textAlign: 'right' }}>
-          <Link to="/signup" style={signUpStyle}>Sign up</Link>
-          <Link to="/dashboard" style={logInStyle}>Dashboard</Link>
-        </div>
       </div>
 
       {/* Navigation Bar */}
