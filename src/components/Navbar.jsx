@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
-import useAdminStatus from '../hooks/useAdminStatus';
-import { useState } from 'react';
 import headerLogo from '../assets/header-logo.png';
+import styles from '../styles/Navbar.module.css'
 
 export default function Navbar() {
   return (
@@ -28,7 +27,7 @@ export default function Navbar() {
           <Link to="/dashboard" style={{
             display: 'inline-block',
             cursor: 'pointer',
-            transition: 'transform 0.2 ease',
+            transition: 'transform 0.2s ease',
             ':hover': {
               transform: 'scale(1.05)'
             }
@@ -59,19 +58,12 @@ export default function Navbar() {
         borderTop: '1px solid #eee',
         borderBottom: '1px solid #eee',
       }}>
-        <Link to="/WhatIsAutism" style={navLinkStyle}>What is Autism?</Link>
-        <Link to="/Information" style={navLinkStyle}>Information</Link>
-        <Link to="/dashboard" style={navLinkStyle}>Dashboard</Link>
-        <Link to="/resources" style={navLinkStyle}>Resources & Support</Link>
-        <Link to="https://www.smilesforspeech.org/" style={navLinkStyle}>Official Website</Link>
+        <Link to="/WhatIsAutism" className={styles.navLink}>What is Autism?</Link>
+        <Link to="/Information" className={styles.navLink}>Information</Link>
+        <Link to="/dashboard" className={styles.navLink}>Dashboard</Link>
+        <Link to="/resources" className={styles.navLink}>Resources & Support</Link>
+        <Link to="https://www.smilesforspeech.org/" className={styles.navLink}>Official Website</Link>
       </nav>
     </header>
   );
 }
-
-// Styles
-const navLinkStyle = {
-  textDecoration: 'none',
-  color: '#000',
-  fontWeight: '500',
-};

@@ -1,0 +1,10 @@
+.navLink {
+    text-decoration: none;
+    color: #000;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.navLink:hover {
+    color: rgba(0, 0, 0, 0.7);
+}
