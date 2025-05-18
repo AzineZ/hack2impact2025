@@ -1,6 +1,6 @@
 # Smiles for Speech Autism Screening App
 
-![Smiles for Speech Logo](app/src/assets/header-logo.png)
+![Smiles for Speech Logo](/src/assets/header-logo.png)
 
 ## 🌟 Overview
 A digital screening tool designed to help identify early signs of autism inn chuldren, particularly for underserved communities in Ghana. This web application empowers parents and caregivers with accessible developmental screening, educational resources, and support recommendations.
