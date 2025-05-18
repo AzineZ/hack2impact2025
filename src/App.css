@@ -39,4 +39,10 @@
   color: #888;
 }
 
+@keyframes fadeInOut {
+  0%   { opacity: 0; transform: translate(-50%, -40%); }
+  10%  { opacity: 1; transform: translate(-50%, -50%); }
+  90%  { opacity: 1; transform: translate(-50%, -50%); }
+  100% { opacity: 0; transform: translate(-50%, -60%); }
+}
 

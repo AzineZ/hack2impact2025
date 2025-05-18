@@ -1,6 +1,80 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { getAuth, signOut } from 'firebase/auth';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+
+// Autism Tips
+const TIP_IMAGES = [
+  '/ghana1.jpg',
+  '/ghana2.jpg',
+  '/ghana3.jpg',
+  '/ghana4.jpg',
+  '/ghana5.jpg',
+  '/ghana6.jpg',
+  '/ghana7.jpg'
+];
+
+// Floating tip card component
+function TipImageFader() {
+  const [index, setIndex] = useState(0);
+  const [position, setPosition] = useState({ top: '50%', left: '50%' });
+  const [key, setKey] = useState(0);
+
+  useEffect(() => {
+    let timeout;
+
+    const getRandomPercent = (min, max) =>
+      `${Math.floor(Math.random() * (max - min + 1) + min)}%`;
+
+    const verticalZones = [
+      { topMin: 45, topMax: 55 },
+      { topMin: 65, topMax: 70 }
+    ];
+    const horizontalZones = [
+      { leftMin: 10, leftMax: 20 },
+      { leftMin: 72, leftMax: 80 }
+    ];
+
+    const cycle = () => {
+      // Pick zones and position
+      const zoneV = verticalZones[Math.floor(Math.random() * verticalZones.length)];
+      const zoneH = horizontalZones[Math.floor(Math.random() * horizontalZones.length)];
+      const top = getRandomPercent(zoneV.topMin, zoneV.topMax);
+      const left = getRandomPercent(zoneH.leftMin, zoneH.leftMax);
+      setPosition({ top, left });
+
+      // Advance to next image in sequence
+      setIndex(prev => (prev + 1) % TIP_IMAGES.length);
+      setKey(Date.now()); // force remount
+
+      timeout = setTimeout(cycle, 3000);
+    };
+
+    cycle();
+    return () => clearTimeout(timeout);
+  }, []);
+
+  return (
+    <img
+      key={key}
+      src={TIP_IMAGES[index]}
+      alt="Ghana photos"
+      style={{
+        position: 'absolute',
+        top: position.top,
+        left: position.left,
+        maxWidth: '300px',
+        height: 'auto',
+        borderRadius: '12px',
+        boxShadow: '0 8px 20px rgba(0, 0, 0, 0.15)',
+        animation: 'fadeInOut 3s ease-in-out',
+        transition: 'opacity 1s ease-in-out, top 0.4s, left 0.4s',
+        zIndex: 0,
+        pointerEvents: 'none'
+      }}
+    />
+  );
+}
+
 
 export default function Dashboard() {
   const auth = getAuth();
@@ -21,7 +95,7 @@ export default function Dashboard() {
     navigate('/login');
   };
 
-  // Dynamic styles that depend on state
+  // Dynamic styles
   const dynamicStyles = {
     primaryButton: {
       padding: '1.5rem 2.5rem',
@@ -71,7 +145,9 @@ export default function Dashboard() {
       textAlign: 'center',
       maxWidth: '800px',
       margin: '0 auto',
-      minHeight: 'calc(100vh - 200px)'
+      minHeight: 'calc(100vh - 200px)',
+      position: 'relative',
+      zIndex: 1
     },
     heading: {
       fontSize: '2rem',
@@ -98,45 +174,44 @@ export default function Dashboard() {
     }
   };
 
-
   return (
     <>
-    <div style={staticStyles.container}>
-      <h1 style={staticStyles.heading}>Welcome, {user?.displayName || user?.email || 'Parent'} 👋</h1>
-      <p style={staticStyles.subheading}>Manage your account and profiles</p>
+      <TipImageFader />
 
-      <div style={staticStyles.buttonContainer}>
-        {/* Main Button */}
-        <Link 
-          to="/profile" 
-          style={dynamicStyles.primaryButton}
-          onMouseEnter={() => handleHover('primary', true)}
-          onMouseLeave={() => handleHover('primary', false)}
-        >
-          👶 Manage Child Profiles
-        </Link>
+      <div style={staticStyles.container}>
+        <h1 style={staticStyles.heading}>Welcome, {user?.displayName || user?.email || 'Parent'} 👋</h1>
+        <p style={staticStyles.subheading}>Manage your account and profiles</p>
 
-        {/* Secondary Buttons */}
-        <div style={staticStyles.secondaryGroup}>
-          <Link
-            to="/settings" 
-            style={dynamicStyles.secondaryButton}
-            onMouseEnter={() => handleHover('settings', true)}
-            onMouseLeave={() => handleHover('settings', false)}
+        <div style={staticStyles.buttonContainer}>
+          <Link 
+            to="/profile" 
+            style={dynamicStyles.primaryButton}
+            onMouseEnter={() => handleHover('primary', true)}
+            onMouseLeave={() => handleHover('primary', false)}
           >
-            ⚙️ Settings
+            👶 Manage Child Profiles
           </Link>
-          <button
-            onClick={handleLogout}
-            style={{ ...dynamicStyles.secondaryButton, ...dynamicStyles.logoutButton }}
-            onMouseEnter={() => handleHover('logout', true)}
-            onMouseLeave={() => handleHover('logout', false)}
-          >
-            🚪 Logout
-          </button>
+
+          <div style={staticStyles.secondaryGroup}>
+            <Link
+              to="/settings" 
+              style={dynamicStyles.secondaryButton}
+              onMouseEnter={() => handleHover('settings', true)}
+              onMouseLeave={() => handleHover('settings', false)}
+            >
+              ⚙️ Settings
+            </Link>
+            <button
+              onClick={handleLogout}
+              style={{ ...dynamicStyles.secondaryButton, ...dynamicStyles.logoutButton }}
+              onMouseEnter={() => handleHover('logout', true)}
+              onMouseLeave={() => handleHover('logout', false)}
+            >
+              🚪 Logout
+            </button>
+          </div>
         </div>
       </div>
-    </div>
     </>
   );
 }
