@@ -15,7 +15,7 @@ export default function Dashboard() {
   return (
     <>
     <div style={styles.container}>
-      <h1 style={styles.heading}>Welcome, {user?.email || 'Parent'} 👋</h1>
+      <h1 style={styles.heading}>Welcome, {user?.displayName || user?.email || 'Parent'} 👋</h1>
       <p style={styles.subheading}>Select an option below to get started:</p>
 
       <div style={styles.grid}>

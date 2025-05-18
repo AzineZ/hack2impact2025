@@ -15,6 +15,7 @@ import WhatIsAutism from './pages/WhatIsAutism';
 import Footer from './components/Footer';
 import Resources from './pages/Resources'
 import Information from './pages/Information';
+import Settings from './pages/Settings';
 
 import './App.css'
 
@@ -80,6 +81,17 @@ function App() {
           </ProtectedRoute>
         }
       />
+
+      <Route
+        path="/settings"
+        element={
+          <ProtectedRoute>
+            <Settings />
+          </ProtectedRoute>
+        }
+      />
+
+
       <Route path="/results/:profileId" element={<Results />} />
       <Route
         path="/admin"
