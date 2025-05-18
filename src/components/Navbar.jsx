@@ -33,44 +33,6 @@ export default function Navbar() {
         }}>
           Smiles for Speech
         </div>
-
-        {/* Auth Buttons */}
-        <div style={{ flex: 1, textAlign: 'right' }}>
-          <Link
-            to="signup"
-            style={{
-              backgroundColor: isHoveredSignUp ? '#eab308' : '#facc15',
-              color: '#000',
-              padding: '0.4rem 1rem',
-              borderRadius: '0.375rem',
-              fontWeight: '500',
-              textDecoration: 'none',
-              marginRight: '1rem',
-              transition: 'background-color 0.3s ease',
-            }}
-            onMouseEnter={() => setIsHoveredSignUp(true)}
-            onMouseLeave={() => setIsHoveredSignUp(false)}
-          >
-            Sign Up
-          </Link>
-          <Link
-            to="/dashboard"
-            style={{
-              backgroundColor: isHoveredDashboard ? '#d1d5db' : '#e5e7eb',
-              border: '1px solid #000',
-              padding: '0.4rem 1rem',
-              borderRadius: '0.375rem',
-              textDecoration: 'none',
-              color: '#000',
-              fontWeight: '500',
-              transition: 'background-color 0.3s ease',
-            }}
-            onMouseEnter={() => setIsHoveredDashboard(true)}
-            onMouseLeave={() => setIsHoveredDashboard(false)}
-          >
-            Dashboard
-          </Link>
-        </div>
       </div>
 
       {/* Navigation Bar */}
