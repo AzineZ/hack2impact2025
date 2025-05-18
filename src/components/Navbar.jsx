@@ -9,20 +9,15 @@ export default function Navbar() {
       {/* Top Header */}
       <div style={{
         display: 'flex',
-        justifyContent: 'space-between',
+        justifyContent: 'center',
         alignItems: 'center',
         padding: '1rem 2rem',
+        position: 'relative'
       }}>
-        {/* Search Icon */}
-        <div style={{ flex: 1 }}>
-          <button style={{ fontSize: '1.5rem', background: 'none', border: 'none', cursor: 'pointer' }}>
-            🔍
-          </button>
-        </div>
-
         {/* Center Logo */}
         <div style={{
-          flex: 1, textAlign: 'center'
+          textAlign: 'center',
+          flex: '0 0 auto'
         }}>
           <Link to="/dashboard" style={{
             display: 'inline-block',
@@ -43,9 +38,6 @@ export default function Navbar() {
             />
           </Link>
         </div>
-        
-        {/* Empty div for balance */}
-        <div style={{ flex: 1 }}></div>
       </div>
 
       {/* Navigation Bar */}
