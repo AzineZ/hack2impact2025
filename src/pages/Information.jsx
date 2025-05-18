@@ -51,7 +51,7 @@ export default function Information() {
           The National Institute of Environmental Health Sciences notes that several environmental factors could play a role 
           in raising the likelihood of autism. These include: 
           </p>
-          <ul className="list-disc list-inside space-y-2">
+          <ul className="list-disc list-inside space-y-3 text-gray-800">
             <li>Older age in one or both parents at the time of conception</li>
             <li>Exposure during pregnancy to pollutants in the air or specific agricultural chemicals</li>
             <li>Health issues in the mother, such as obesity, diabetes, or immune-related conditions</li>
@@ -85,7 +85,7 @@ export default function Information() {
             <li>Strong need for routine; becomes upset with minor changes</li>
             <li>Limited make-believe or pretend play</li>
             <li>Unusual movement patterns, such as toe-walking or clumsiness</li>
-            </ul>
+        </ul>
         
         </section>
 

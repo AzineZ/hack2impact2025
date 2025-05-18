@@ -47,7 +47,7 @@ export default function Navbar() {
       }}>
         <Link to="/WhatIsAutism" style={navLinkStyle}>What is Autism?</Link>
         <Link to="/Information" style={navLinkStyle}>Information</Link>
-        <Link to="/assessment" style={navLinkStyle}>Assessment</Link>
+        <Link to="/dashboard" style={navLinkStyle}>Dashboard</Link>
         <Link to="/resources" style={navLinkStyle}>Resources & Support</Link>
         <Link to="https://www.smilesforspeech.org/" style={navLinkStyle}>Official Website</Link>
       </nav>
