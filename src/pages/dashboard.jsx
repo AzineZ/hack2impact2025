@@ -15,21 +15,26 @@ export default function Dashboard() {
     <>
     <div style={styles.container}>
       <h1 style={styles.heading}>Welcome, {user?.displayName || user?.email || 'Parent'} 👋</h1>
-      <p style={styles.subheading}>Select an option below to get started:</p>
+      <p style={styles.subheading}>Manage your account and profiles</p>
 
-      <div style={styles.grid}>
-        <Link to="/profile" style={styles.tile}>
-          👶 <span>Manage Child Profiles</span>
+      <div style={styles.buttonContainer}>
+        {/* Main Button */}
+        <Link to="/profile" style={styles.primaryButton}>
+          👶 Manage Child Profiles
         </Link>
-        <Link to="/resources" style={styles.tile}>
-          📚 <span>Autism Resources</span>
-        </Link>
-        <Link to="/settings" style={styles.tile}>
-          ⚙️ <span>Settings</span>
-        </Link>
-        <button onClick={handleLogout} style={{ ...styles.tile, backgroundColor: '#e74c3c' }}>
-          🚪 <span>Logout</span>
-        </button>
+
+        {/* Secondary Buttons */}
+        <div style={styles.secondaryGroup}>
+          <Link to="/settings" style={styles.secondaryButton}>
+            ⚙️ Settings
+          </Link>
+          <button
+            onClick={handleLogout}
+            style={{ ...styles.secondaryButton, ...styles.logoutButton }}
+          >
+            🚪 Logout
+          </button>
+        </div>
       </div>
     </div>
     </>
@@ -39,33 +44,67 @@ export default function Dashboard() {
 const styles = {
   container: {
     padding: '2rem',
-    textAlign: 'center'
+    textAlign: 'center',
+    maxWidth: '800px',
+    margin: '0 auto',
+    minHeight: 'calc(100vh - 200px)'
   },
   heading: {
     fontSize: '2rem',
-    marginBottom: '0.5rem'
+    marginBottom: '0.5rem',
+    color: '#2c3e50'
   },
   subheading: {
     color: '#666',
-    marginBottom: '2rem'
+    marginBottom: '2rem',
+    fontSize: '1.1rem'
   },
-  grid: {
-    display: 'grid',
+  buttonContainer: {
+    display: 'flex',
+    flexDirection: 'column',
     gap: '1.5rem',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-    justifyItems: 'center'
+    alignItems: 'center'
   },
-  tile: {
-    padding: '1.5rem',
-    fontSize: '1.2rem',
-    borderRadius: '10px',
+  primaryButton: {
+    padding: '1.5rem 2.5rem',
+    fontSize: '1.4rem',
+    borderRadius: '12px',
     backgroundColor: '#3498db',
     color: 'white',
     textDecoration: 'none',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
+    width: '100%',
+    maxWidth: '400px',
+    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+    border: 'none',
     cursor: 'pointer',
-    border: 'none'
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: '0.5rem'
+  },
+  secondaryGroup: {
+    display: 'flex',
+    gap: '1rem',
+    width: '100%',
+    maxWidth: '400px',
+    justifyContent: 'space-between'
+  },
+  secondaryButton: {
+    padding: '1rem 1.5rem',
+    fontSize: '1.1rem',
+    borderRadius: '8px',
+    backgroundColor: '#95a5a6',
+    color: 'white',
+    textDecoration: 'none',
+    width: '48%',
+    border: 'none',
+    cursor: 'pointer',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: '0.5rem'
+  },
+  logoutButton: {
+    backgroundColor: '#c0392b'
   }
 };
