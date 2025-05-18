@@ -1,24 +1,85 @@
+/* Container setup */
 .login-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 100vh;
+    height: 100%;
     background-color: #f2f5fa;
-    padding: 2rem;
-    width: 100%;            
-    box-sizing: border-box; 
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
   }
   
+  /* Background slideshow */
+  .slideshow-background {
+    position: fixed; /* key for isolation */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -10; /* push way behind everything */
+    pointer-events: none; /* ensure no interaction issues */
+  }
+  
+  .slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    animation: fade 15s infinite;
+    transition: opacity 1s ease-in-out;
+  }
+  
+  .slide1 {
+    background-image: url('/ghana1.jpg');
+    animation-delay: 0s;
+  }
+  
+  .slide2 {
+    background-image: url('/ghana2.jpg');
+    animation-delay: 5s;
+  }
+  
+  .slide3 {
+    background-image: url('/ghana3.jpg');
+    animation-delay: 10s;
+  }
+
+  .slide-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3); /* dim effect */
+    z-index: 1;
+    pointer-events: none;
+  }
+  
+  @keyframes fade {
+    0%   { opacity: 0; }
+    10%  { opacity: 1; }
+    30%  { opacity: 1; }
+    40%  { opacity: 0; }
+    100% { opacity: 0; }
+  }
+  
+  /* Login title */
   .login-title {
-    font-size: 2.5rem;
+    font-size: 3.5rem;
     font-weight: 600;
-    color: #000000; /* Black */
-    margin-bottom: 7%;
+    color: white;
+
+    z-index: 2;
   }
   
+  /* Login card styling */
   .login-card {
-    background: #fff;
+    background: rgba(255, 255, 255, 0.92); /* translucent */
+    backdrop-filter: blur(4px); /* subtle glass effect */
     padding: 2rem;
     border-radius: 12px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
@@ -26,6 +87,8 @@
     width: 100%;
     text-align: center;
     border-top: 6px solid #fcd116;
+    z-index: 2;
+    margin-top: 8rem;
   }
   
   .login-subtitle {
@@ -34,64 +97,44 @@
     margin-bottom: 1.5rem;
   }
   
-  /* Form Elements */
+  /* Inputs inside the form */
   .login-card input[type="email"],
-  .login-card input[type="password"] {
+  .login-card input[type="password"],
+  .form-group input {
     width: 100%;
     padding: 0.75rem;
     margin: 0.5rem 0;
     border: 1px solid #ccc;
     border-radius: 6px;
     font-size: 1rem;
+    box-sizing: border-box;
   }
   
-  /* Apply Ghana flag gradient to buttons */
-.form-group button {
-    width: 100%;
-    padding: 0.75rem;
-    font-size: 1rem;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    background: linear-gradient(90deg, #ce1126, #fcd116, #007847); /* red → yellow → green */
-    font-weight: bold;
-  }
-  
-  .login-card button:hover {
-    background-color: #0056b3;
-  }
-  
+  /* Form layout */
   .form-group {
     width: 100%;
     margin-bottom: 1rem;
   }
   
-  .form-group input {
-    width: 100%;
-    padding: 0.75rem;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    box-sizing: border-box;
-  }
-  
+  /* Ghana-style button */
   .form-group button {
     width: 100%;
     padding: 0.75rem;
     font-size: 1rem;
-    background-color: #007bff;
     color: white;
     border: none;
     border-radius: 6px;
     cursor: pointer;
+    background: linear-gradient(90deg, #ce1126, #fcd116, #007847);
+    font-weight: bold;
   }
   
   .form-group button:hover {
     opacity: 0.9;
     transform: scale(1.01);
   }
-
+  
+  /* Auth actions layout */
   .auth-actions {
     display: flex;
     flex-direction: column;
@@ -114,3 +157,15 @@
     background-color: #F9BF18;
   }
   
+  .login-container ~ footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(6px);
+    padding: 1rem;
+    text-align: center;
+    z-index: 10;
+    border-top: 1px solid #ccc;
+  }
