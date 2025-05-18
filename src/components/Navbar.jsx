@@ -1,8 +1,12 @@
 import { Link } from 'react-router-dom';
 import useAdminStatus from '../hooks/useAdminStatus';
+import { useState } from 'react';
 
 export default function Navbar() {
   const { isAdmin, loading } = useAdminStatus();
+  const [isHoveredSignUp, setIsHoveredSignUp] = useState(false);
+  const [isHoveredDashboard, setIsHoveredDashboard] = useState(false);
+
   return (
     <header style={{ borderBottom: '1px solid #ddd' }}>
       
@@ -32,8 +36,40 @@ export default function Navbar() {
 
         {/* Auth Buttons */}
         <div style={{ flex: 1, textAlign: 'right' }}>
-          <Link to="/signup" style={signUpStyle}>Sign up</Link>
-          <Link to="/dashboard" style={logInStyle}>Dashboard</Link>
+          <Link
+            to="signup"
+            style={{
+              backgroundColor: isHoveredSignUp ? '#eab308' : '#facc15',
+              color: '#000',
+              padding: '0.4rem 1rem',
+              borderRadius: '0.375rem',
+              fontWeight: '500',
+              textDecoration: 'none',
+              marginRight: '1rem',
+              transition: 'background-color 0.3s ease',
+            }}
+            onMouseEnter={() => setIsHoveredSignUp(true)}
+            onMouseLeave={() => setIsHoveredSignUp(false)}
+          >
+            Sign Up
+          </Link>
+          <Link
+            to="/dashboard"
+            style={{
+              backgroundColor: isHoveredDashboard ? '#d1d5db' : '#e5e7eb',
+              border: '1px solid #000',
+              padding: '0.4rem 1rem',
+              borderRadius: '0.375rem',
+              textDecoration: 'none',
+              color: '#000',
+              fontWeight: '500',
+              transition: 'background-color 0.3s ease',
+            }}
+            onMouseEnter={() => setIsHoveredDashboard(true)}
+            onMouseLeave={() => setIsHoveredDashboard(false)}
+          >
+            Dashboard
+          </Link>
         </div>
       </div>
 
@@ -59,25 +95,6 @@ export default function Navbar() {
 
 // Styles
 const navLinkStyle = {
-  textDecoration: 'none',
-  color: '#000',
-  fontWeight: '500',
-};
-
-const signUpStyle = {
-  backgroundColor: '#facc15', // yellow-400
-  color: '#000',
-  padding: '0.4rem 1rem',
-  borderRadius: '0.375rem',
-  fontWeight: '500',
-  textDecoration: 'none',
-  marginRight: '1rem',
-};
-
-const logInStyle = {
-  border: '1px solid #000',
-  padding: '0.4rem 1rem',
-  borderRadius: '0.375rem',
   textDecoration: 'none',
   color: '#000',
   fontWeight: '500',
