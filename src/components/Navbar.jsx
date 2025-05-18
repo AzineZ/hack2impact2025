@@ -4,10 +4,6 @@ import { useState } from 'react';
 import headerLogo from '../assets/header-logo.png';
 
 export default function Navbar() {
-  const { isAdmin, loading } = useAdminStatus();
-  const [isHoveredSignUp, setIsHoveredSignUp] = useState(false);
-  const [isHoveredDashboard, setIsHoveredDashboard] = useState(false);
-
   return (
     <header style={{ borderBottom: '1px solid #ddd' }}>
       
@@ -29,15 +25,24 @@ export default function Navbar() {
         <div style={{
           flex: 1, textAlign: 'center'
         }}>
-          <img
-            src={headerLogo}
-            alt="Smiles for Speech Logo"
-            style={{
-              height: '100px',
-              maxWidth: '100%',
-              objectFit: 'contain'
-            }}
-          />
+          <Link to="/dashboard" style={{
+            display: 'inline-block',
+            cursor: 'pointer',
+            transition: 'transform 0.2 ease',
+            ':hover': {
+              transform: 'scale(1.05)'
+            }
+          }}>
+            <img
+              src={headerLogo}
+              alt="Smiles for Speech Logo"
+              style={{
+                height: '100px',
+                maxWidth: '100%',
+                objectFit: 'contain'
+              }}
+            />
+          </Link>
         </div>
         
         {/* Empty div for balance */}
