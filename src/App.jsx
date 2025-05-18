@@ -6,7 +6,7 @@ import { db } from './firebase';
 import { BrowserRouter, Routes, Route, Link, useNavigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Login from './pages/Login';
-import Dashboard from './pages/Dashboard';
+import Dashboard from './pages/dashboard';
 import Profile from './pages/Profile'
 import Results from './pages/Result';
 import AdminDashboard from './pages/AdminDashboard';
@@ -14,6 +14,7 @@ import AdminRoute from './components/AdminRoute';
 import WhatIsAutism from './pages/WhatIsAutism';
 import Footer from './components/Footer';
 import Resources from './pages/Resources'
+import Information from './pages/Information';
 
 import './App.css'
 
@@ -58,6 +59,15 @@ function App() {
         element={
           <ProtectedRoute>
             <WhatIsAutism />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/Information"
+        element={
+          <ProtectedRoute>
+            <Information />
           </ProtectedRoute>
         }
       />
