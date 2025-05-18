@@ -7,7 +7,10 @@ export default function Footer() {
       marginTop: '2rem',
       padding: '2rem 1rem',
       backgroundColor: '#fff',
-      textAlign: 'center'
+      textAlign: 'center',
+      zIndex: 10,
+      position: 'absolute',
+      bottom: 0
     }}>
       <div>
       <a className='website-link' href="https://www.smilesforspeech.org/">Official Website</a>
