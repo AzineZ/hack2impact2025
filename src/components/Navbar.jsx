@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import useAdminStatus from '../hooks/useAdminStatus';
 import { useState } from 'react';
+import headerLogo from '../assets/header-logo.png';
 
 export default function Navbar() {
   const { isAdmin, loading } = useAdminStatus();
@@ -24,15 +25,23 @@ export default function Navbar() {
           </button>
         </div>
 
-        {/* Center Title */}
+        {/* Center Logo */}
         <div style={{
-          flex: 1,
-          textAlign: 'center',
-          fontSize: '3rem',
-          fontWeight: '500',
+          flex: 1, textAlign: 'center'
         }}>
-          Smiles for Speech
+          <img
+            src={headerLogo}
+            alt="Smiles for Speech Logo"
+            style={{
+              height: '100px',
+              maxWidth: '100%',
+              objectFit: 'contain'
+            }}
+          />
         </div>
+        
+        {/* Empty div for balance */}
+        <div style={{ flex: 1 }}></div>
       </div>
 
       {/* Navigation Bar */}
