@@ -36,7 +36,11 @@ function App() {
 
   return (
     <BrowserRouter>
+<<<<<<< Updated upstream
       <Navbar /> 
+=======
+      <Navbar />
+>>>>>>> Stashed changes
       <Routes>
       <Route path="/" element={<Login />} />
       <Route
