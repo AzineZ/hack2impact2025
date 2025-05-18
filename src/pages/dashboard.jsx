@@ -1,5 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { getAuth, signOut } from 'firebase/auth';
+import Navbar from '../components/Navbar';
 
 export default function Dashboard() {
   const auth = getAuth();
@@ -12,6 +13,8 @@ export default function Dashboard() {
   };
 
   return (
+    <>
+    <Navbar />
     <div style={styles.container}>
       <h1 style={styles.heading}>Welcome, {user?.email || 'Parent'} 👋</h1>
       <p style={styles.subheading}>Select an option below to get started:</p>
@@ -31,6 +34,7 @@ export default function Dashboard() {
         </button>
       </div>
     </div>
+    </>
   );
 }
 

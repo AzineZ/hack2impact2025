@@ -35,7 +35,6 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Navbar />
       <Routes>
       <Route path="/" element={<Login />} />
       <Route

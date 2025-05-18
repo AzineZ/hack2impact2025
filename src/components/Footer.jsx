@@ -9,22 +9,8 @@ export default function Footer() {
       backgroundColor: '#fff',
       textAlign: 'center'
     }}>
-      <div style={{ marginBottom: '1rem '}}>
-        <a
-          href="https://www.smilesforspeech.org"
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{
-            textDecoration: 'none',
-            color: '#3498db',
-            fontWeight: '500',
-            ':hover': {
-              textDecoration: 'underline'
-            }
-          }}
-        >
-          Official Website
-        </a>
+      <div>
+      <a className='website-link' href="https://www.smilesforspeech.org/">Official Website</a>
       </div>
 
       <div style={{ fontSize: '0.9rem', color: '#666' }}>

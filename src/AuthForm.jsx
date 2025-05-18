@@ -1,5 +1,6 @@
 import { useState } from "react";
 import useAuth from "./hooks/useAuth";
+import { useNavigate } from 'react-router-dom';
 
 export default function AuthForm({ onAuthSuccess }) {
     const [email, setEmail] = useState("");
@@ -9,6 +10,8 @@ export default function AuthForm({ onAuthSuccess }) {
     const [error, setError] = useState("");
     const [message, setMessage] = useState("");
     const { signUp, logIn, resetPassword } = useAuth();
+    const navigate = useNavigate();
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -21,6 +24,7 @@ export default function AuthForm({ onAuthSuccess }) {
             } else if (isLogin) {
                 await logIn(email, password);
                 setMessage("Logged in successfully");
+                navigate('/dashboard');
                 onAuthSuccess();
             } else {
                 await signUp(email, password);
@@ -57,30 +61,39 @@ export default function AuthForm({ onAuthSuccess }) {
             {error && <p className="error">{error}</p>}
             {message && <p className="success">{message}</p>}
             <form onSubmit={handleSubmit}>
+            <div className="form-group">
                 <input
-                    type="email"
-                    placeholder="Email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                type="email"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                />
+            </div>
+
+            {!showForgotPassword && (
+                <div className="form-group">
+                <input
+                    type="password"
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                     required
                 />
-                {!showForgotPassword && (
-                    <input
-                        type="password"
-                        placeholder="Password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
-                    />
-                )}
+                </div>
+            )}
+
+            <div className="form-group">
                 <button type="submit">
-                    {showForgotPassword 
-                        ? "Send Reset Email"
-                        : isLogin 
-                        ? "Login" 
-                        : "Sign Up"}
+                {showForgotPassword 
+                    ? "Send Reset Email"
+                    : isLogin 
+                    ? "Login" 
+                    : "Sign Up"}
                 </button>
+            </div>
             </form>
+
             <div className="auth-actions">
                 {!showForgotPassword ? (
                     <>
