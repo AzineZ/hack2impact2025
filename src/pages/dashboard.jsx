@@ -1,6 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { getAuth, signOut } from 'firebase/auth';
-import Navbar from '../components/Navbar';
 
 export default function Dashboard() {
   const auth = getAuth();
