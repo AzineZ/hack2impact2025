@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { collection, addDoc, updateDoc, doc } from 'firebase/firestore';
 import { db } from '../firebase';
+import '../styles/profileForm.css';
 
 export default function ProfileForm({ user, editingProfile, onClose }) {
   const [formData, setFormData] = useState({ name: '', age: '', notes: '' });
@@ -52,7 +53,7 @@ export default function ProfileForm({ user, editingProfile, onClose }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{ border: '1px solid #ccc', padding: '1em', marginTop: '1em' }}>
+    <form className="profile-edit-form" onSubmit={handleSubmit} style={{ border: '1px solid #ccc', padding: '1em', marginTop: '1em' }}>
       <label>
         Name:
         <input name="name" value={formData.name} onChange={handleChange} required />
@@ -70,9 +71,10 @@ export default function ProfileForm({ user, editingProfile, onClose }) {
         <textarea name="notes" value={formData.notes} onChange={handleChange} />
       </label>
       <br />
-
-      <button type="submit">{editingProfile ? 'Update' : 'Create'}</button>
-      <button type="button" onClick={onClose} style={{ marginLeft: '0.5em' }}>Cancel</button>
+      <div className="form-buttons">
+        <button type="submit">{editingProfile ? 'Update' : 'Create'}</button>
+        <button type="button" onClick={onClose} style={{ marginLeft: '0.5em' }}>Cancel</button>
+      </div>
     </form>
   );
 }

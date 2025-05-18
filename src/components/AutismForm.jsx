@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { collection, addDoc } from 'firebase/firestore';
 import { db } from '../firebase';
-import { getRecommendations } from '../utilityFunctions/recRules';
+import '../styles/AutismForm.css';
 
 const likertOptions = ["Never", "Rarely", "Sometimes", "Often", "Always"];
 const likertMap = {
@@ -69,21 +69,14 @@ export default function AutismForm({ user, profile, onClose }) {
         profile.id,
         'screenings'
       );
-      
-      const mappedAnswers = Object.fromEntries(
-        Object.entries(answers).map(([q, a]) => [q, likertMap[a]])
-      );
-      const totalScore = Object.values(mappedAnswers).reduce((sum, val) => sum + val, 0);
-      const recommendations = getRecommendations({ answers: mappedAnswers, totalScore });
-      console.log(recommendations);
-      
+
       await addDoc(screeningsRef, {
         profileId: profile.id,
         profileName: profile.name,
         contact: contactInfo,
-        answers: mappedAnswers,
-        totalScore,
-        recommendations,
+        answers: Object.fromEntries(
+          Object.entries(answers).map(([q, a]) => [q, likertMap[a]])
+        ),
         submittedAt: new Date()
       });
 
@@ -100,7 +93,7 @@ export default function AutismForm({ user, profile, onClose }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{ padding: '1em', border: '1px solid #ccc', marginTop: '1em' }}>
+    <form className="autism-screening-form" onSubmit={handleSubmit}>
       <h2>Screening for {profile.name}</h2>
 
       <label>
@@ -112,39 +105,39 @@ export default function AutismForm({ user, profile, onClose }) {
           required
         />
       </label>
-      <br /><br />
 
       {Object.entries(questionGroups).map(([section, questions]) => (
-        <fieldset key={section} style={{ marginBottom: '1em' }}>
-          <legend><strong>{section}</strong></legend>
+        <fieldset key={section}>
+          <legend>{section}</legend>
           {questions.map((q) => (
-            <div key={q}>
-              <label>{q}</label><br />
-              {likertOptions.map((opt) => (
-                <label key={opt} style={{ marginRight: '1em' }}>
-                  <input
-                    type="radio"
-                    name={q}
-                    value={opt}
-                    checked={answers[q] === opt}
-                    onChange={() => handleAnswer(q, opt)}
-                    required
-                  />
-                  {opt}
-                </label>
-              ))}
-              <br /><br />
+            <div key={q} className="question-block">
+              <label>{q}</label>
+              <div className="likert-options">
+                {likertOptions.map((opt) => (
+                  <label key={opt}>
+                    <input
+                      type="radio"
+                      name={q}
+                      value={opt}
+                      checked={answers[q] === opt}
+                      onChange={() => handleAnswer(q, opt)}
+                      required
+                    />
+                    {opt}
+                  </label>
+                ))}
+              </div>
             </div>
           ))}
         </fieldset>
       ))}
 
-      <button type="submit" disabled={submitting}>
-        {submitting ? "Submitting..." : "Submit Screening"}
-      </button>
-      <button type="button" onClick={onClose} style={{ marginLeft: '0.5em' }}>
-        Cancel
-      </button>
+      <div className="form-buttons">
+        <button type="submit" disabled={submitting}>
+          {submitting ? "Submitting..." : "Submit Screening"}
+        </button>
+        <button type="button" onClick={onClose}>Cancel</button>
+      </div>
     </form>
   );
 }

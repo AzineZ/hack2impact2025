@@ -14,6 +14,8 @@ import { db } from '../firebase';
 import { getAuth } from 'firebase/auth';
 import { getRecommendations } from '../utilityFunctions/recRules';
 import ScreeningResultActions from '../components/ScreeningResultActions';
+import '../styles/Result.css';
+
 
 function interpretScore(score) {
   if (score <= 30) return 'Low concern';
@@ -78,33 +80,34 @@ export default function Results() {
       {screenings.length === 0 ? (
         <p>No screenings found for this child.</p>
       ) : (
-        <ul>
+        <ul className="screening-list">
           <h3>Severity Score Over Time (Lower is better)</h3>
-            <div style={{ width: '100%', height: 300 }}>
+          <div className="chart-container">
             <ResponsiveContainer>
-                <LineChart data={chartData}>
+              <LineChart data={chartData}>
                 <CartesianGrid stroke="#ccc" />
                 <XAxis dataKey="date" />
                 <YAxis domain={[0, 80]} />
                 <Tooltip />
                 <Line type="monotone" dataKey="totalScore" stroke="#8884d8" />
-                </LineChart>
+              </LineChart>
             </ResponsiveContainer>
-            </div>
+          </div>
+
           {screenings.map((screening) => (
-            <li key={screening.id} style={{ marginBottom: '1em', borderBottom: '1px solid #ccc', paddingBottom: '1em' }}>
+            <li key={screening.id} className="screening-card">
               <p><strong>Date:</strong> {screening.submittedAt?.toDate().toLocaleDateString()}</p>
               <p><strong>Severity Score:</strong> {screening.totalScore}/80</p>
               <p><strong>Assessment:</strong> {interpretScore(screening.totalScore)}</p>
-              
-              <button onClick={() => toggleExpanded(screening.id)}>
+
+              <button onClick={() => toggleExpanded(screening.id)} className="toggle-btn">
                 {expandedId === screening.id ? 'Hide Screening Details' : 'Show Screening Details'}
               </button>
 
               {expandedId === screening.id && (
-                <div style={{ marginTop: '1em' }}>
+                <div className="details-section">
                   <h4>Detailed Answers</h4>
-                  <ul>
+                  <ul className="answer-list">
                     {Object.entries(screening.answers).map(([question, value]) => (
                       <li key={question}>
                         <strong>{question}</strong>: {value}
@@ -114,13 +117,13 @@ export default function Results() {
                 </div>
               )}
 
-              {/* Always visible recommendations */}
               <h4>Personalized Recommendations</h4>
-              <ul>
+              <ul className="recommendation-list">
                 {getRecommendations(screening).map((rec, i) => (
                   <li key={i}>{rec}</li>
                 ))}
               </ul>
+
               <ScreeningResultActions
                 screening={screening}
                 recommendations={getRecommendations(screening)}

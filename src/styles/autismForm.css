@@ -1,0 +1,85 @@
+.autism-screening-form {
+    max-width: 700px;
+    margin: 2rem auto;
+    padding: 2rem;
+    border: 2px solid #f1c40f;
+    border-radius: 10px;
+    background-color: #fff;
+    font-family: 'Segoe UI', sans-serif;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+  
+  .autism-screening-form h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #2c3e50;
+  }
+  
+  .autism-screening-form label {
+    font-weight: 600;
+    color: #34495e;
+    display: block;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .autism-screening-form input[type="text"] {
+    width: 100%;
+    padding: 0.6rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+  }
+  
+  fieldset {
+    margin-top: 2rem;
+    border: 1px solid #eee;
+    padding: 1rem;
+    border-radius: 6px;
+  }
+  
+  legend {
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+  }
+  
+  .question-block {
+    margin-top: 1rem;
+  }
+  
+  .likert-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 0.5rem;
+    justify-content: center;
+  }
+  
+  .likert-options label {
+    font-weight: normal;
+    color: #333;
+  }
+  
+  .form-buttons {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+  
+  .form-buttons button {
+    background-color: #f1c40f;
+    color: #000;
+    font-weight: 600;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .form-buttons button:hover {
+    background-color: #e1b700;
+  }
+  
