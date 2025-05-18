@@ -8,7 +8,7 @@ export default function Information() {
       {/* Left Sidebar */}
       <TableOfContents />
 
-      {/* Main Content */}
+      {/* Main Content */} 
       <main className="ml-[18rem] px-6 py-10 max-w-4xl text-gray-800 scroll-smooth">
         
         <section id="what-is-autism" className="mb-10">
