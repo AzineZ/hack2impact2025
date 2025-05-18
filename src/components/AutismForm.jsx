@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { collection, addDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import '../styles/AutismForm.css';
+import { getRecommendations } from '../utilityFunctions/recRules';
+
 
 const likertOptions = ["Never", "Rarely", "Sometimes", "Often", "Always"];
 const likertMap = {
@@ -74,11 +76,14 @@ export default function AutismForm({ user, profile, onClose }) {
         return sum + likertMap[val];
       }, 0);
 
+      const recommendations = getRecommendations({ totalScore: score });
+
       await addDoc(screeningsRef, {
         profileId: profile.id,
         profileName: profile.name,
         contact: contactInfo,
         totalScore: score,
+        recommendations,
         answers: Object.fromEntries(
           Object.entries(answers).map(([q, a]) => [q, likertMap[a]])
         ),

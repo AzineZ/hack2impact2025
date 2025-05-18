@@ -16,6 +16,7 @@ import Footer from './components/Footer';
 import Resources from './pages/Resources';
 import Information from './pages/Information';
 import Settings from './pages/Settings';
+import AdminBackfill from './pages/AdminBackfill';
 
 import './App.css'
 import { useNavigate } from 'react-router-dom';
@@ -54,6 +55,7 @@ function AppWrapper() {
           <Route path="/settings" element={<ProtectedRoute><Settings /></ProtectedRoute>} />
           <Route path="/results/:profileId" element={<Results />} />
           <Route path="/admin" element={<AdminRoute><AdminDashboard /></AdminRoute>} />
+          <Route path="/admin-backfill" element={<AdminBackfill />} />
         </Routes>
       </div>
 
