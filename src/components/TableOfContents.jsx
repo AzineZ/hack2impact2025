@@ -3,10 +3,10 @@ import React from 'react';
 export default function TableOfContents() {
   return (
     <aside style={{
-        position: 'fixed',
+        position: 'sticky',
         top: '6rem',
         left: '1.5rem',
-        width: '16rem',
+        width: '15rem',
         backgroundColor: '#fff',
         border: '1px solid #ccc',
         borderRadius: '0.75rem',
@@ -14,8 +14,8 @@ export default function TableOfContents() {
         padding: '1.25rem',
         fontSize: '0.875rem',
         color: '#1d4ed8',
-        marginTop: '10%',
-        marginLeft: '1.5%',
+        marginTop: '3%',
+        marginLeft: '5%',
       }}>
         <h2 style={{
           fontSize: '1.125rem',
@@ -26,7 +26,7 @@ export default function TableOfContents() {
         }}>Table of Contents</h2>
         
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-          <a href="#what-is-autism" style={{ textDecoration: 'none', color: '#1d4ed8' }}>What is Autism?</a>
+          <a href="#about-autism" style={{ textDecoration: 'none', color: '#1d4ed8' }}>About Autism</a>
           <a href="#causes" style={{ textDecoration: 'none', color: '#1d4ed8' }}>Causes</a>
           <a href="#symptoms" style={{ textDecoration: 'none', color: '#1d4ed8' }}>Symptoms</a>
           <a href="#screenings" style={{ textDecoration: 'none', color: '#1d4ed8' }}>Screenings</a>
