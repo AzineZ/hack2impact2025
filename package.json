@@ -5,6 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "check-imports": "node check-case-sensitive-imports.cjs",
+    "prebuild": "npm run check-imports",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
@@ -26,6 +28,7 @@
     "eslint": "^9.25.0",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.19",
+    "glob": "^11.0.2",
     "globals": "^16.0.0",
     "vite": "^6.3.5"
   }

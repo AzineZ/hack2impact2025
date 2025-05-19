@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { collection, addDoc } from 'firebase/firestore';
 import { db } from '../firebase';
-import '../styles/AutismForm.css';
+import '../styles/autismForm.css';
 import { getRecommendations } from '../utilityFunctions/recRules';
 
 

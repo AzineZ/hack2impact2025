@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import '../styles/ProfileList.css';
+import '../styles/profileList.css';
 
 export default function ProfileList({ profiles, onEdit, onDelete, onScreen }) {
   return (
