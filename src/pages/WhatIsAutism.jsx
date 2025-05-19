@@ -1,4 +1,5 @@
 import React from 'react';
+import autismInfographic from '../assets/What is autism infographic.jpg';
 
 export default function WhatIsAutism() {
   return (
@@ -33,7 +34,7 @@ export default function WhatIsAutism() {
         </div>
         
         <img 
-          src="src/assets/What is autism infographic.jpg" 
+          src={autismInfographic}
           alt="Autism awareness illustration" 
           className="mx-auto rounded-lg shadow-md mb-6"
           style={{

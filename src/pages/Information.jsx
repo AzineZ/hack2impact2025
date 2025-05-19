@@ -1,5 +1,6 @@
 import React from 'react';
 import TableOfContents from '../components/TableOfContents'; 
+import autismFactorsImg from '../assets/Factors-that-influence-autism.png';
 
 export default function Information() {
   return (
@@ -29,7 +30,7 @@ export default function Information() {
 
         <section id="causes" className="mb-10">
         <img 
-          src="src/assets/Factors-that-influence-autism.png" 
+          src={autismFactorsImg}
           alt="Autism awareness illustration" 
           className="mx-auto rounded-lg shadow-md mb-6"
           style={{
