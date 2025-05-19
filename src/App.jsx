@@ -5,7 +5,7 @@ import AuthForm from './AuthForm';
 import useAuth from './hooks/useAuth';
 import { db } from './firebase';
 import Navbar from './components/Navbar';
-import Login from './pages/Login';
+import Login from './pages/login';
 import Dashboard from './pages/dashboard';
 import Profile from './pages/Profile';
 import Results from './pages/Result';
