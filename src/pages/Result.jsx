@@ -14,7 +14,7 @@ import { db } from '../firebase';
 import { getAuth } from 'firebase/auth';
 import { getRecommendations } from '../utilityFunctions/recRules';
 import ScreeningResultActions from '../components/ScreeningResultActions';
-import '../styles/Result.css';
+import '../styles/result.css';
 
 
 function interpretScore(score) {

@@ -9,7 +9,7 @@ import {
 } from 'firebase/auth';
 import { doc, updateDoc, getDoc } from 'firebase/firestore';
 import { db } from '../firebase';
-import '../styles/Settings.css';
+import '../styles/settings.css';
 import { useNavigate } from 'react-router-dom';
 
 export default function Settings() {
