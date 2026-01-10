@@ -34,7 +34,13 @@ export default function useAuth() {
     const signUp = async (email, password) => {
         try {
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-            await sendEmailVerification(userCredential.user);
+
+            const actionCodeSettings = {
+                url: window.location.origin,
+                handleCodeInApp: true,
+            };
+
+            await sendEmailVerification(userCredential.user, actionCodeSettings);
             return userCredential;
         } catch (error) {
             throw error;
