@@ -38,13 +38,13 @@ function ProtectedRoute({ children }) {
 // Wrapper to use `useLocation` inside `App`
 function AppWrapper() {
   const location = useLocation();
-  const hideNavbar = location.pathname === '/';
+  const isLoginPage = location.pathname === '/';
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-      {!hideNavbar && <Navbar />}
+      {!isLoginPage && <Navbar />}
 
-      <div style={{ flex: 1, padding: '20px 0' }}>
+      <div style={{ flex: 1, padding: isLoginPage ? 0 : '20px 0' }}>
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
@@ -59,7 +59,7 @@ function AppWrapper() {
         </Routes>
       </div>
 
-      <Footer />
+      {!isLoginPage && <Footer />}
     </div>
   );
 }
